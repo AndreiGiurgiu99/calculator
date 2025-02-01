@@ -10,9 +10,12 @@ let secondNumber = null
 let opr = ''
 
 cifra.forEach( (cif) => {
+    let c = cif.textContent
     cif.addEventListener("click", () => {
-        
-        display.textContent +=cif.textContent
+        if (display.textContent.includes(".") && c === ".") 
+            console.log("can't put another decimal point")
+        else
+            display.textContent += cif.textContent
         
     })
 })
@@ -20,7 +23,7 @@ cifra.forEach( (cif) => {
 
 operator.forEach( (op) => {
     op.addEventListener("click", () => {
-        operator.forEach(ope => ope.style.backgroundColor = "gray")
+        operator.forEach(ope => ope.style.backgroundColor = "black")
         
         if (opr === '') {
             firstNumber = Number(display.textContent)
@@ -61,6 +64,8 @@ equal.addEventListener("click", ()=>{
         }
 
         opr = ''
+        operator.forEach(ope => ope.style.backgroundColor = "black")
+
 })
 
 function add(first, second) {
